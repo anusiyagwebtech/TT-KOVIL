@@ -1,0 +1,56 @@
+# BEGIN Turn ETags Off
+<ifModule mod_headers.c>
+  Header unset ETag
+</ifModule>
+FileETag None
+# END Turn ETags Off
+Options +FollowSymlinks
+Options -Indexes
+DirectoryIndex index.php
+RewriteEngine on
+RewriteCond %{SERVER_PORT} 80 
+#RewriteCond %{HTTP_HOST} !^www\.
+
+RewriteRule ^master/(.*)/viewpending_order.htm pages/master/viewpending_order.php?id=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/viewassigned_order.htm pages/master/viewassigned_order.php?id=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/viewcompleted_order.htm pages/master/viewcompleted_order.php?id=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/viewcustomer.htm pages/master/viewcustomer.php?id=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editdriver.htm pages/master/adddriver.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editblog.htm pages/master/addblog.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editbanner.htm pages/master/addbanner.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editbookingappointment.htm pages/master/addbookingappointment.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editcategorybanner.htm pages/master/addcategorybanner.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editcategory.htm pages/master/addcategory.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editsubcategory.htm pages/master/addsubcategory.php?pid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editsetting.htm pages/master/addsetting.php?banid=$1 [L,QSA]
+
+RewriteRule ^master/(.*)/editproduct.htm pages/master/addproduct.php?pid=$1 [L,QSA]
+
+
+RewriteRule ^master/(.*)/settings.htm pages/master/settings.php?banid=$1 [L,QSA]
+
+
+
+RewriteRule ^master/(.*).htm pages/master/$1.php [L,QSA]
+
+
+
+RewriteRule ^(.*)\.htm $1.php [L,QSA]
+
+
+
+RewriteCond %{THE_REQUEST} !^POST
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
